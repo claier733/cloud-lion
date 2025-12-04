@@ -1,0 +1,2 @@
+INFO     log:test_restart.py:66 Status Code: 200
+INFO     log:test_restart.py:67 Response Content: {"msg":"更新成功","code":0,"data":""}

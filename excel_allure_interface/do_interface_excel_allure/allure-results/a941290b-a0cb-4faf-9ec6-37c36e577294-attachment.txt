@@ -1,0 +1,15 @@
+INFO     log:test_restart.py:66 Status Code: 200
+INFO     log:test_restart.py:67 Response Content: {"msg":"用户名已存在","code":-1,"data":""}
+INFO     log:test_restart.py:72 用户名已存在，重试第 1 次
+INFO     log:test_restart.py:66 Status Code: 200
+INFO     log:test_restart.py:67 Response Content: {"msg":"用户名已存在","code":-1,"data":""}
+INFO     log:test_restart.py:72 用户名已存在，重试第 2 次
+INFO     log:test_restart.py:66 Status Code: 200
+INFO     log:test_restart.py:67 Response Content: {"msg":"用户名已存在","code":-1,"data":""}
+INFO     log:test_restart.py:72 用户名已存在，重试第 3 次
+INFO     log:test_restart.py:66 Status Code: 200
+INFO     log:test_restart.py:67 Response Content: {"msg":"用户名已存在","code":-1,"data":""}
+INFO     log:test_restart.py:72 用户名已存在，重试第 4 次
+INFO     log:test_restart.py:66 Status Code: 200
+INFO     log:test_restart.py:67 Response Content: {"msg":"用户名已存在","code":-1,"data":""}
+INFO     log:test_restart.py:72 用户名已存在，重试第 5 次
