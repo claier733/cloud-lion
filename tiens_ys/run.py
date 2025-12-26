@@ -13,7 +13,7 @@ try:
     from excel_allure_interface.tool.send_email import send_email, get_test_statistics
     EMAIL_AVAILABLE = True
 except ImportError:
-    print("⚠️  邮件发送模块未找到，将跳过邮件发送")
+    print("邮件发送模块未找到，将跳过邮件发送")
     EMAIL_AVAILABLE = False
 
 
@@ -31,8 +31,8 @@ def run(send_email_flag=True, recipients=None):
     test_dir = os.path.dirname(test_file)
     os.chdir(test_dir)
 
-    print(f"🚀 开始执行测试文件: {test_file}")
-    print(f"📁 工作目录: {os.getcwd()}")
+    print(f"开始执行测试文件: {test_file}")
+    print(f"工作目录: {os.getcwd()}")
 
     # 运行指定的测试文件
     exit_code = pytest.main([test_file, '-v', '--alluredir=./allure-results'])
@@ -49,9 +49,9 @@ def run(send_email_flag=True, recipients=None):
 
             # 根据测试结果确定邮件主题
             if exit_code == 0:
-                subject = "✅ 云狮智选接口自动化测试报告 - 所有用例通过"
+                subject = "云狮智选接口自动化测试报告 - 所有用例通过"
             else:
-                subject = "⚠️ 云狮智选接口自动化测试报告 - 存在失败的用例"
+                subject = "云狮智选接口自动化测试报告 - 存在失败的用例"
 
             # 构建邮件正文
             body = f"""
@@ -59,7 +59,7 @@ def run(send_email_flag=True, recipients=None):
             <h2>测试结果概览</h2>
             <p style="color: #20c997;">✓ 通过用例: {passed_count}</p>
             <p style="color: #dc3545;">✗ 失败用例: {failed_count}</p>
-            <p style="color: #ffc107;">⚠ 错误用例: {error_count}</p>
+            <p style="color: #ffc107;">错误用例: {error_count}</p>
             <p>总用例数: {total}</p>
             <p>通过率: {pass_rate:.2f}%</p>
             <p>详细测试报告请查看附件。</p>
@@ -74,21 +74,21 @@ def run(send_email_flag=True, recipients=None):
             # 报告目录（作为附件）
             attachment_dir = os.path.abspath(report_dir)
 
-            print(f"📊 测试统计: 通过{passed_count}, 失败{failed_count}, 错误{error_count}, 通过率{pass_rate:.2f}%")
-            print(f"📧 准备发送邮件给: {', '.join(to_emails)}")
+            print(f"测试统计: 通过{passed_count}, 失败{failed_count}, 错误{error_count}, 通过率{pass_rate:.2f}%")
+            print(f"准备发送邮件给: {', '.join(to_emails)}")
 
             # 发送邮件
             send_email(subject, body, to_emails, attachment_dir)
-            print("✅ 测试报告已发送至邮箱")
+            print("测试报告已发送至邮箱")
 
         except Exception as e:
-            print(f"❌ 发送邮件失败: {e}")
+            print(f"发送邮件失败: {e}")
     else:
-        print("ℹ️  跳过邮件发送")
+        print("跳过邮件发送")
 
-    print("✅ 测试完成！")
-    print(f"📊 报告位置: {report_dir}")
-    print("🌐 查看报告命令: allure serve ./allure-results")
+    print("测试完成！")
+    print(f"报告位置: {report_dir}")
+    print("查看报告命令: allure serve ./allure-results")
 
     return exit_code
 
