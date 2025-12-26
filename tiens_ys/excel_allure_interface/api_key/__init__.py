@@ -1,0 +1,2 @@
+class ApiKey:
+    pass

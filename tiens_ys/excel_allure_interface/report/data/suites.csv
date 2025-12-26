@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Dec 26 10:40:13 CST 2025","Fri Dec 26 10:40:14 CST 2025","360","do_interface_excel_allure","test_restart","","","","正确的账号，错误的密码登录",""
+"passed","Fri Dec 26 10:40:14 CST 2025","Fri Dec 26 10:40:14 CST 2025","368","do_interface_excel_allure","test_restart","","","","错误的账号，正确的密码登录",""
+"passed","Fri Dec 26 10:40:12 CST 2025","Fri Dec 26 10:40:13 CST 2025","1124","do_interface_excel_allure","test_restart","","","","账号登录",""
+"passed","Fri Dec 26 10:40:14 CST 2025","Fri Dec 26 10:40:15 CST 2025","285","","","","","","禁止登录的账户登录",""
+"passed","Fri Dec 26 10:40:14 CST 2025","Fri Dec 26 10:40:14 CST 2025","319","do_interface_excel_allure","test_restart","","","","正确的账号，7位的密码",""
