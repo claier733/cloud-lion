@@ -7,14 +7,19 @@ import allure
 import openpyxl
 import pytest
 from allure_pytest.utils import allure_title
-
 from excel_allure_interface.tool.username import random_str
 from excel_allure_interface.api_key.api_key import ApiKey
 from excel_allure_interface.excel_reader.exscel_driver import ReadExcel
 from datetime import date
-
 from excel_allure_interface.tool.log_util import logger
+import sys
 
+# 添加项目根目录到Python路径
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
+
+print(f"测试文件位置: {__file__}")
+print(f"项目根目录: {project_root}")
 # 获取当前日期
 current_date = date.today()  # 获取当前日期
 
@@ -25,8 +30,24 @@ def setup_module():
     global ak, r, sheet, excel, extract_dict, expr
     # 2,实例化类
     ak = ApiKey()
-    # 3,打开excel
-    excel = openpyxl.load_workbook('../data/demoe.xlsx')
+    # 3,打开excel - 使用绝对路径
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    excel_path = os.path.join(current_dir, '..', 'data', 'demoe.xlsx')
+
+    # 调试信息
+    print(f"当前目录: {current_dir}")
+    print(f"Excel路径: {excel_path}")
+    print(f"文件是否存在: {os.path.exists(excel_path)}")
+
+    if not os.path.exists(excel_path):
+        # 尝试查找文件
+        for root, dirs, files in os.walk(current_dir):
+            for file in files:
+                if 'demoe' in file.lower():
+                    print(f"找到可能的目标文件: {os.path.join(root, file)}")
+        raise FileNotFoundError(f"无法找到Excel文件: {excel_path}")
+
+    excel = openpyxl.load_workbook(excel_path)
     sheet = excel['info']
     # 4,数据抽取存储
     extract_dict = {}  # 存储公共变量
