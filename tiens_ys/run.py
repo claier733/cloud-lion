@@ -25,7 +25,7 @@ def run(send_email_flag=True, recipients=None):
         recipients: 收件人列表，如果为None则使用默认收件人
     """
     # 指定正确的测试文件路径
-    test_file = r'D:\Users\86138\pythonProject\tiens_ys\excel_allure_interface\do_interface_excel_allure\test_restart.py'
+    test_file = r'D:\11\tiens_ys\excel_allure_interface\do_interface_excel_allure\test_ys.py'
 
     # 切换到测试文件所在目录，确保相对路径正确
     test_dir = os.path.dirname(test_file)
