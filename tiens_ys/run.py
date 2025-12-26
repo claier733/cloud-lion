@@ -36,7 +36,7 @@ def run(send_email_flag=True, recipients=None):
 
     # 运行指定的测试文件
     exit_code = pytest.main([test_file, '-v', '--alluredir=./allure-results'])
-
+    print(f"打印exit_code码: {exit_code}")
     # 生成Allure报告
     report_dir = os.path.join(test_dir, '..', 'report')
     os.system(f'allure generate ./allure-results -o {report_dir} --clean')
@@ -48,7 +48,7 @@ def run(send_email_flag=True, recipients=None):
             passed_count, failed_count, error_count, total, pass_rate = get_test_statistics()
 
             # 根据测试结果确定邮件主题
-            if exit_code == 0:
+            if exit_code == 2:
                 subject = "云狮智选接口自动化测试报告 - 所有用例通过"
             else:
                 subject = "云狮智选接口自动化测试报告 - 存在失败的用例"

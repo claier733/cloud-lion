@@ -68,10 +68,10 @@ def send_email(subject, body, to_emails, attachment_dir=None):
         server = smtplib.SMTP_SSL(smtp_server, smtp_port)
         server.login(smtp_username, smtp_password)
         server.send_message(msg)
-        print("✅ 邮件发送成功！")
+        print(" 邮件发送成功！")
 
     except Exception as e:
-        print(f"❌ 邮件发送失败: {e}")
+        print(f"邮件发送失败: {e}")
         raise  # 重新抛出异常以便上层捕获
     finally:
         if temp_zip_path and os.path.exists(temp_zip_path):
@@ -90,9 +90,9 @@ if __name__ == "__main__":
     body = f"""
     <h1>每日巡检接口测试完成</h1>
     <h2>测试结果概览</h2>
-    <p style="color: #20c997;">✓ 通过用例: {passed_count}</p>
-    <p style="color: #dc3545;">✗ 失败用例: {failed_count}</p>
-    <p style="color: #ffc107;">⚠ 错误用例: {error_count}</p>
+    <p style="color: #20c997;">通过用例: {passed_count}</p>
+    <p style="color: #dc3545;">失败用例: {failed_count}</p>
+    <p style="color: #ffc107;"> 错误用例: {error_count}</p>
     <p>总用例数: {total}</p>
     <p>通过率: {pass_rate:.2f}%</p>
     <p>详细测试报告请查看附件。</p>
